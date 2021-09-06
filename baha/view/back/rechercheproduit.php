@@ -2,8 +2,17 @@
 <?PHP
 	include "../../controller/produitC.php";
 
-	$affproduit=new produitC();
-	$aff=$affproduit->afficherproduit();
+
+    if(isset($_POST['choix']) )
+    { if  ($_POST['choix']=='categorie'){
+		$UtilisateurC=new produitC();
+	$allusers =$UtilisateurC->recherchercategorie($_POST['Search']) ;
+	}
+
+		if  ($_POST['choix']=='nom'){
+			$UtilisateurC=new produitC();
+        $allusers =$UtilisateurC->recherchernom($_POST['Search']) ;
+		}
 
 ?>
 
@@ -313,7 +322,7 @@
                   </thead>
                   <tbody>
                     <?php 
-                    foreach($aff as $produit) {
+                    foreach($allusers  as $produit) {
                     ?>
 
                     <tr>
@@ -339,7 +348,7 @@
 
                     </tr>
                     <?PHP
-                        }
+                        } }
                     ?>
                     
                   </tbody>

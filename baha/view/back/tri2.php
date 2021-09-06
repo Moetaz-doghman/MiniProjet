@@ -3,7 +3,7 @@
 	include "../../controller/produitC.php";
 
 	$affproduit=new produitC();
-	$aff=$affproduit->afficherproduit();
+	$aff=$affproduit->trierproduit2();
 
 ?>
 
@@ -296,7 +296,7 @@
              
             
         
-              <div class="card-body table-responsive p-0" style="height: 750px;">
+              <div class="card-body table-responsive p-0" style="height: 700px;">
                 <table class="table table-head-fixed text-nowrap">
                   <thead>
                     <tr>
@@ -347,17 +347,6 @@
  <br>
                  <center> <a href="tri.php">Tri Croissant Selon Le Prix </a></li> </center>
                  <br><center> <a href="tri2.php">Tri Decroissant Selon Le Prix</a></li> </center>
-                 <form method="POST" action="rechercheproduit.php"> 
-                   <br>
-                 <center>    <select  placeholder="sujet" name="choix" id="choix" >
-                            <option>Select</option>
-                            <option>categorie</option>
-                            <option>nom</option>
-                            </select>  
-                         
-                              <input type="text"  name="Search" name="Search"  placeholder="Search" >   
-        <input type="submit" class="btn btn-outline-primary" onclick="return verif3();"></i>  </center>
-      </form>	
               </div>
               <!-- /.card-body -->
             </div>
@@ -420,7 +409,5 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
-<script src="js/scripte.js"></script>
-
 </body>
 </html>

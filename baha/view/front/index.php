@@ -309,7 +309,7 @@
 			    ?>
     			<div class="col-sm col-md-6 col-lg ftco-animate">
     				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="../../images/<?= $homme['image'] ?>" alt="Colorlib Template" >
+    					<a href="#" class="img-prod"><img src="../../images/<?= $homme['image'] ?>" alt="" height="500" width="300" alt="Colorlib Template" >
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 px-3">
@@ -363,7 +363,8 @@
 								?>
     			<div class="col-sm col-md-6 col-lg ftco-animate">
     				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="../../images/<?= $femme['image'] ?>" alt="Colorlib Template" >
+    					<a href="#" class="img-prod"><img src="../../images/<?= $homme['image'] ?>" alt="" height="500" width="300" alt="Colorlib Template" >
+						
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 px-3">
