@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                     $_SESSION['cart']=array_values($_SESSION['cart']);
                     echo "<script>
                    
-                    window.location.href='ajouterCommande.php';
+                    window.location.href='cart.php';
                     </script>";
                    }
                }
@@ -67,7 +67,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                      $_SESSION['cart'][$key]['Quantity']=$_POST['Mod_Quantity'];
                      
                      echo "<script>
-                     window.location.href='ajouterCommande.php';
+                     window.location.href='cart.php';
                      </script>";
                     }
                 }

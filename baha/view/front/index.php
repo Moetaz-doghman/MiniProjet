@@ -60,25 +60,25 @@
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Winkel</a>
+	      <a class="navbar-brand" href="index.php">Winkel</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>
 	          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
               	<a class="dropdown-item" href="shop.html">Shop</a>
                 <a class="dropdown-item" href="product-single.html">Single Product</a>
-                <a class="dropdown-item" href="cart.html">Cart</a>
-                <a class="dropdown-item" href="checkout.html">Checkout</a>
+                <a class="dropdown-item" href="cart.php">Cart</a>
+                <a class="dropdown-item" href="checkout.php">Checkout</a>
               </div>
             </li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+	          <li class="nav-item cta cta-colored"><a href="cart.php" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 
 	        </ul>
 	      </div>
@@ -149,6 +149,7 @@
     		<div class="row">
     			<div class="col-sm col-md-6 col-lg ftco-animate">
     				<div class="product">
+					<form action="manage_cart.php" method="POST">
     					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">
     						<span class="status">30%</span>
     						<div class="overlay"></div>
@@ -169,20 +170,28 @@
 	    							</p>
 	    						</div>
 	    					</div>
+
 	    					<p class="bottom-area d-flex px-3">
-    							<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+							<button type ="submit"  name="addtocart" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
     							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
     						</p>
+											<input type="hidden" name="Item_Name" value='Floral Jackquard Pullover'>
+											<input type="hidden" name="Item_id" value='1'>
+                                            <input type="hidden" name="price" value="80.000">
+					</form>
+
     					</div>
     				</div>
     			</div>
     			<div class="col-sm col-md-6 col-lg ftco-animate">
     				<div class="product">
+					<form action="manage_cart.php" method="POST">
+
     					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-2.jpg" alt="Colorlib Template">
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 px-3">
-    						<h3><a href="#">Floral Jackquard Pullover</a></h3>
+    						<h3><a href="#">Robe gris</a></h3>
     						<div class="d-flex">
     							<div class="pricing">
 		    						<p class="price"><span>$120.00</span></p>
@@ -198,10 +207,14 @@
 	    						</div>
 	    					</div>
     						<p class="bottom-area d-flex px-3">
-    							<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+							<button type ="submit"  name="addtocart" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
     							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
     						</p>
+											<input type="hidden" name="Item_Name" value='Robe gris'>
+											<input type="hidden" name="Item_id" value='2'>
+                                            <input type="hidden" name="price" value="120.000">
     					</div>
+				</form>
     				</div>
     			</div>
     			<div class="col-sm col-md-6 col-lg ftco-animate">
@@ -210,10 +223,12 @@
 	    					<div class="overlay"></div>
 	    				</a>
     					<div class="text py-3 px-3">
-    						<h3><a href="#">Floral Jackquard Pullover</a></h3>
+						<form action="manage_cart.php" method="POST">
+
+    						<h3><a href="#">Robe Blanche</a></h3>
     						<div class="d-flex">
     							<div class="pricing">
-		    						<p class="price"><span>$120.00</span></p>
+		    						<p class="price"><span>$100.00</span></p>
 		    					</div>
 		    					<div class="rating">
 	    							<p class="text-right">
@@ -226,10 +241,14 @@
 	    						</div>
 	    					</div>
     						<p class="bottom-area d-flex px-3">
-    							<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+							<button type ="submit"  name="addtocart" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
     							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
     						</p>
+											<input type="hidden" name="Item_Name" value='Robe Blanche'>
+											<input type="hidden" name="Item_id" value='3'>
+                                            <input type="hidden" name="price" value="100.000">
     					</div>
+				</form>
     				</div>
     			</div>
     			<div class="col-sm col-md-6 col-lg ftco-animate">
@@ -238,10 +257,12 @@
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 px-3">
-    						<h3><a href="#">Floral Jackquard Pullover</a></h3>
+						<form action="manage_cart.php" method="POST">
+
+    						<h3><a href="#">Pantalon Bleu</a></h3>
     						<div class="d-flex">
     							<div class="pricing">
-		    						<p class="price"><span>$120.00</span></p>
+		    						<p class="price"><span>$70.00</span></p>
 		    					</div>
 		    					<div class="rating">
 	    							<p class="text-right">
@@ -254,10 +275,14 @@
 	    						</div>
 	    					</div>
     						<p class="bottom-area d-flex px-3">
-    							<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+							<button type ="submit"  name="addtocart" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
     							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
     						</p>
+							<input type="hidden" name="Item_Name" value='Pantalon Bleu'>
+											<input type="hidden" name="Item_id" value='4'>
+                                            <input type="hidden" name="price" value="70.000">
     					</div>
+					</form>
     				</div>
     			</div>
     		</div>
