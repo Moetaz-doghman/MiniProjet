@@ -74,6 +74,69 @@ class produitC {
         }   
     }
 
+    function supprimerproduit($produit)
+    {
+        $sql="DELETE FROM produit where id= :id ";
+        $db = config::getConnexion();
+        $req=$db->prepare($sql);
+        
+        $req->bindValue(':id',$_POST["id"]);
+        try{
+            $req->execute();
+          //  header('Location: produit.php');
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+    }
+
+    function modifierproduit($produit, $id){
+        try {
+            $db = config::getConnexion();
+            $query = $db->prepare(
+                'UPDATE produit SET 
+                    categorie = :categorie, 
+                    nom = :nom, 
+                    description = :description,
+                    prix = :prix,
+                    image = :image
+                   
+                   
+                WHERE id = :id'
+            );
+            $query->execute([
+                'categorie' => $produit->getcategorie(),
+                'nom' => $produit->getnom(),
+                'description' => $produit->getdescription(),
+                'prix' => $produit->getprix(),
+                'image' => $produit->getimage(),
+
+               
+
+                'id' => $id
+            ]);
+            echo $query->rowCount() . " records UPDATED successfully <br>";
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
+
+    function recupereretat($id)
+    {
+        $sql="SELECT * from produit where id=$id";
+        $db = config::getConnexion();
+        try{
+            $query=$db->prepare($sql);
+            $query->execute();
+
+            $user=$query->fetch();
+            return $user;
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+    }
+
 
    
    

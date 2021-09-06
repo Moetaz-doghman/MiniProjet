@@ -1,10 +1,48 @@
-  
-<?PHP
-	include "../../controller/produitC.php";
+<?php
+    include_once '../../controller/produitC.php';
+    include_once '../../model/produit.php';
 
-	$affproduit=new produitC();
-	$aff=$affproduit->afficherproduit();
 
+    $error = "";
+
+    // create user
+    $user = null;
+
+    // create an instance of the controller
+    $userC = new produitC();
+    if (
+        isset($_POST["categorie"]) &&
+        isset($_POST["nom"]) && 
+        isset($_POST["description"]) &&
+        isset($_POST["prix"]) &&
+		    isset($_POST["image"]) 
+       ) 
+        
+     {
+        if (
+            !empty($_POST["categorie"]) &&  
+            !empty($_POST["nom"]) && 
+            !empty($_POST["description"]) &&  
+            !empty($_POST["prix"]) && 
+		      	!empty($_POST["image"])
+            
+        ) {
+            $user = new produit(
+                $_POST['categorie'],
+                $_POST['nom'],
+                $_POST['description'],
+                $_POST['prix'], 
+				$_POST['image'],
+                
+                
+            );
+            $userC->modifierproduit($user, $_GET['id']);
+            header('Location:produit.php');
+        }
+        else
+            $error = "Missing information";
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -79,6 +117,7 @@
               </div>
             </div>
           </form>
+          
         </div>
       </li>
 
@@ -290,66 +329,88 @@
 
     <!-- Main content -->
     <section class="content">
+   
     <div class="row">
-          <div class="col-12">
-            <div class="card">
-             
-            
-        
-              <div class="card-body table-responsive p-0" style="height: 700px;">
-                <table class="table table-head-fixed text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Categorie</th>
-                      <th>Nom</th>
-                      <th>Description</th>
-                      <th>Prix</th>
-                      <th>Image</th>
-                      <th>Modifier</th>
-                      <th>Supprimer</th>
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Ajouter Produits</h3>
 
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php 
-                    foreach($aff as $produit) {
-                    ?>
-
-                    <tr>
-                    <td><?PHP echo $produit['id']; ?></td>
-                    <td><?PHP echo $produit['categorie']; ?></td>
-                    <td><?PHP echo $produit['nom']; ?></td>
-                    <td><?PHP echo $produit['description']; ?></td>
-                    <td><?PHP echo $produit['prix']; ?></td>
-                    <td><img src="../../images/<?= $produit['image'] ?>" width = "100" height = "100"></td>
-
-                    <td>
-                    <a href="modifierproduit.php?id=<?PHP echo $produit['id']; ?>"> <img src="https://img.icons8.com/fluent/48/000000/edit-file.png"/> </a>
-                  </td>
-                  <td>
-                    <form method="POST" action="supprimerproduit.php">
-                    <button type="submit" style="background-color:transparent; border-color:transparent;"> 
-                    <img src="https://img.icons8.com/color/48/000000/delete-forever.png"/>
-                                </button>	
-                    <input type="hidden" value=<?PHP echo $produit['id']; ?> name="id">
-                    </form>
-                  </td>
-
-                    </tr>
-                    <?PHP
-                        }
-                    ?>
-                  </tbody>
-                </table>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
               </div>
-              <!-- /.card-body -->
             </div>
-            <!-- /.card -->
+           
+            <div class="card-body">
+            <?php
+			if (isset($_GET['id'])){
+				$user = $userC->recupereretat($_GET['id']);
+				
+		?>
+
+            <form name="f1" action="" method="POST">
+
+            <div class="form-group">
+                <label for="categorie" >Categories</label>
+                <select id="categorie" name="categorie" class="form-control custom-select" >
+                <?php 
+                if ($user['categorie']== 'Homme' )
+                {
+                ?>
+                 <option><?php echo $user['categorie']; ?></option>
+                  <option>Femme</option>
+                </select>
+                <?php 
+                } else {
+                ?>
+                <option><?php echo $user['categorie']; ?></option>
+                  <option>Homme</option>
+                  </select>
+                <?php 
+                }
+                ?> 
+               
+              </div>
+              <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" class="form-control" value = "<?php echo $user['nom']; ?>"  required>
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" class="form-control" rows="4"  required><?php echo $user['description']; ?>"</textarea>
+              </div>
+              <div class="form-group">
+                <label for="prix">Prix</label>
+                <input type="number" step="any" id="prix" name="prix" class="form-control" value = "<?php echo $user['prix']; ?>" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="image">Image</label>
+                <input type="text" id="image" name="image" class="form-control" value = "<?php echo $user['image']; ?>"  required>
+              </div>
+                <input type="reset" class='btn btn-secondary ' value="Back">
+							<input type="submit" class="btn btn-primary" value="Valider" >
+                  </form>
+                  <?php
+                  }
+                        
+                ?>
+
+              
+               
+
+            </div>
+            <!-- /.card-body -->
           </div>
+          <!-- /.card -->
         </div>
-        <!-- /.row -->
+      
+      </div>
     
+  
+  
     </section>
     <!-- /.content -->
   </div>

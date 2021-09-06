@@ -72,6 +72,8 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <script src="js/script.js"></script>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -348,7 +350,7 @@
             <div class="form-group">
                 <label for="categorie" >Categories</label>
                 <select id="categorie" name="categorie" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
+                  <option value="select">Select one</option>
                   <option>Homme </option>
                   <option>Femme</option>
                 </select>
@@ -369,12 +371,12 @@
               <div class="form-group">
                     <label for="image">Image</label> 
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="image" name="image" >
+                      <input type="file" class="custom-file-input" id="image" name="image" required>
                       <label class="custom-file-label" for="image" >Choose file</label>
                     </div>
                   </div>
                 <input type="reset" class='btn btn-secondary ' value="Back">
-							<input type="submit" class="btn btn-primary" value="Valider" >
+							<input type="submit" class="btn btn-primary" value="Valider" onclick="return verif1();" >
                   </form>
 
             </div>
