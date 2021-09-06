@@ -1,7 +1,7 @@
 function verif1() {
 
   
-    var categorie = document.querySelector('#type').value;
+    var categorie = document.querySelector('#categorie').value;
     
     
 
