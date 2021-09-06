@@ -11,28 +11,28 @@
     // create an instance of the controller
     $userC = new produitC();
     if (
-        isset($_POST["nom"]) && 
-        isset($_POST["prix"]) &&
         isset($_POST["categorie"]) &&
+        isset($_POST["nom"]) && 
         isset($_POST["description"]) &&
-		isset($_POST["image"]) 
+        isset($_POST["prix"]) &&
+		    isset($_POST["image"]) 
        ) 
         
      {
         if (
-            !empty($_POST["nom"]) && 
-            !empty($_POST["prix"]) && 
             !empty($_POST["categorie"]) &&  
+            !empty($_POST["nom"]) && 
             !empty($_POST["description"]) &&  
-			!empty($_POST["image"])
+            !empty($_POST["prix"]) && 
+		      	!empty($_POST["image"])
             
         ) {
             $user = new produit(
-                $_POST['nom'],
-                $_POST['prix'], 
                 $_POST['categorie'],
+                $_POST['nom'],
                 $_POST['description'],
-				$_POST['image'],
+                $_POST['prix'], 
+				        $_POST['image'],
                 
                 
             );
@@ -341,47 +341,42 @@
                 </button>
               </div>
             </div>
+           
             <div class="card-body">
             <form name="f1" action="" method="POST">
 
-		<table>
-		
-		<tr>
-		<td><label>nom</label></td>
-		<td><input type="texte" name="nom" id="nom" max="30" placeholder="Nom" required /> </td>
-		</tr>
-		<tr>
-		<td><label>prix</label></td>
-		<td><input type="number" name="prix" id="prix"  min="5" placeholder="Prix" required /> </td>
-		</tr>
-		<tr>
-		<td> <label for="categorie">categorie </label> </td>
-	<td> <select name="categorie">
-	<option value="chien">Chien</option>
-	<option value="chat">Chat</option>
-	<option value="oiseau">Oiseau</option>
-	</select>
-	</td>
-	</tr>
-  <tr>
-		<td><label>description</label></td>
-		<td><input type="texte" name="description" id="description" max="30" placeholder="d" required /> </td>
-		</tr>
+            <div class="form-group">
+                <label for="categorie" >Categories</label>
+                <select id="categorie" name="categorie" class="form-control custom-select">
+                  <option selected disabled>Select one</option>
+                  <option>Homme </option>
+                  <option>Femme</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" class="form-control"  required>
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="prix">Prix</label>
+                <input type="number" step="any" id="prix" name="prix" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                    <label for="image">Image</label> 
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="image" name="image" >
+                      <label class="custom-file-label" for="image" >Choose file</label>
+                    </div>
+                  </div>
+                <input type="reset" class='btn btn-secondary ' value="Back">
+							<input type="submit" class="btn btn-primary" value="Valider" >
+                  </form>
 
-	
-		<tr>
-		<td><label>image</label></td>
-		<td><input type="file" name="image" id="image" placeholder="image" required /> </td>
-		</tr>
-
-
-	
-		
-		</table>
-	
-		<input type="submit" value="submit">
-
-  </form>
             </div>
             <!-- /.card-body -->
           </div>
