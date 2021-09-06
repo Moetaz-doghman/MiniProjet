@@ -163,6 +163,30 @@ class produitC {
         }	
     }
 
+    function recherchernom($nom){
+		$sql="SELECT * From produit WHERE nom= '$nom' ";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+		catch (Exception $e){
+			die('Erreur: '.$e->getMessage());
+		}	
+	}
+
+    function recherchercategorie($categorie){
+		$sql="SELECT * From produit WHERE categorie= '$categorie' ";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+		catch (Exception $e){
+			die('Erreur: '.$e->getMessage());
+		}	
+	}
+
    
    
 
