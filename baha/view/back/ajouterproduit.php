@@ -37,7 +37,7 @@
                 
             );
             $userC->ajouterproduit($user);
-            header('Location:affichernourriture.php');
+            header('Location:produit.php');
         }
         else
             $error = "Missing information";
