@@ -333,7 +333,7 @@
                     <td><?PHP echo $produit['nom']; ?></td>
                     <td><?PHP echo $produit['description']; ?></td>
                     <td><?PHP echo $produit['prix']; ?></td>
-                    <td><img src="../images/<?= $produit['image'] ?>" width = "50" height = "50"></td>
+                    <td><img src="../../images/<?= $produit['image'] ?>" width = "50" height = "50"></td>
                     </tr>
                     <?PHP
                         }

@@ -8,7 +8,6 @@
 	$aff2=$affproduit2->afficherproduit2();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -79,8 +78,6 @@
               </div>
             </li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 
 	        </ul>
@@ -272,31 +269,29 @@
     	<div class="container">
 				<div class="row justify-content-center mb-3 pb-3">
           <div class="col-md-12 heading-section text-center ftco-animate">
-            <h2 class="mb-4">Homme</h2>
+            <h2 class="mb-4">MEN</h2>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
           </div>
         </div>   		
     	</div>
     	<div class="container">
     		<div class="row">
-			<?PHP
+				<?PHP
 							    
 				foreach($aff1 as $homme){
 								
 							   
-			?>
+			    ?>
     			<div class="col-sm col-md-6 col-lg ftco-animate">
     				<div class="product">
-    					<a href="#" class="img-prod">	<img class="img-fluid" src="images/<?= $user['image'] ?>"  alt="Colorlib Template">
-					
-    						<span class="status">30%</span>
+    					<a href="#" class="img-prod"><img class="img-fluid" src="../../images/<?= $homme['image'] ?>" alt="Colorlib Template" >
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 px-3">
-    						<h3><a href="#">Floral Jackquard Pullover</a></h3>
+						<h3><a href="#"> <?php echo $homme['nom'] ?></h3>
     						<div class="d-flex">
     							<div class="pricing">
-		    						<p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
+		    						<p class="price"><span class="price-sale"><h2> <?php echo $homme['prix']."DT"; ?></h2></span></p>
 		    					</div>
 		    					<div class="rating">
 	    							<p class="text-right">
@@ -315,6 +310,10 @@
     					</div>
     				</div>
     			</div>
+				<?PHP
+			              	}
+							
+			     ?>
     			
     		</div>
     	</div>
@@ -324,24 +323,29 @@
     	<div class="container">
 				<div class="row justify-content-center mb-3 pb-3">
           <div class="col-md-12 heading-section text-center ftco-animate">
-            <h2 class="mb-4">Products 2</h2>
+            <h2 class="mb-4">WOMAN</h2>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
           </div>
         </div>   		
     	</div>
     	<div class="container">
     		<div class="row">
+			<?PHP
+							    
+								foreach($aff2 as $femme){
+												
+											   
+								?>
     			<div class="col-sm col-md-6 col-lg ftco-animate">
     				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-5.jpg" alt="Colorlib Template">
-    						<span class="status">30%</span>
+    					<a href="#" class="img-prod"><img class="img-fluid" src="../../images/<?= $femme['image'] ?>" alt="Colorlib Template" >
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 px-3">
-    						<h3><a href="#">Floral Jackquard Pullover</a></h3>
+						<h3><a href="#"> <?php echo $femme['nom'] ?></h3>
     						<div class="d-flex">
     							<div class="pricing">
-		    						<p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
+		    						<p class="price"><span class="price-sale"><h2> <?php echo $femme['prix']."DT"; ?></h2></span></p>
 		    					</div>
 		    					<div class="rating">
 	    							<p class="text-right">
@@ -360,90 +364,11 @@
     					</div>
     				</div>
     			</div>
-    			<div class="col-sm col-md-6 col-lg ftco-animate">
-    				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-6.jpg" alt="Colorlib Template">
-	    					<div class="overlay"></div>
-	    				</a>
-    					<div class="text py-3 px-3">
-    						<h3><a href="#">Floral Jackquard Pullover</a></h3>
-    						<div class="d-flex">
-    							<div class="pricing">
-		    						<p class="price"><span>$120.00</span></p>
-		    					</div>
-		    					<div class="rating">
-	    							<p class="text-right">
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    							</p>
-	    						</div>
-	    					</div>
-    						<p class="bottom-area d-flex px-3">
-    							<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-    							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-    						</p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-sm col-md-6 col-lg ftco-animate">
-    				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-7.jpg" alt="Colorlib Template">
-    						<div class="overlay"></div>
-    					</a>
-    					<div class="text py-3 px-3">
-    						<h3><a href="#">Floral Jackquard Pullover</a></h3>
-    						<div class="d-flex">
-    							<div class="pricing">
-		    						<p class="price"><span>$120.00</span></p>
-		    					</div>
-		    					<div class="rating">
-	    							<p class="text-right">
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    							</p>
-	    						</div>
-	    					</div>
-    						<p class="bottom-area d-flex px-3">
-    							<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-    							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-    						</p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-sm col-md-6 col-lg ftco-animate">
-    				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-8.jpg" alt="Colorlib Template">
-    						<div class="overlay"></div>
-    					</a>
-    					<div class="text py-3 px-3">
-    						<h3><a href="#">Floral Jackquard Pullover</a></h3>
-    						<div class="d-flex">
-    							<div class="pricing">
-		    						<p class="price"><span>$120.00</span></p>
-		    					</div>
-		    					<div class="rating">
-	    							<p class="text-right">
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-	    							</p>
-	    						</div>
-	    					</div>
-    						<p class="bottom-area d-flex px-3">
-    							<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-    							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-    						</p>
-    					</div>
-    				</div>
-    			</div>
+				<?PHP
+			              	}
+							
+			     ?>
+    			
     		</div>
     	</div>
     </section>
