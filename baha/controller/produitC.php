@@ -137,6 +137,31 @@ class produitC {
         }
     }
 
+    function trierproduit1(){
+			
+        $sql="SELECT * FROM produit ORDER BY prix DESC";
+        $db = config::getConnexion();
+        try{
+            $liste = $db->query($sql);
+            return $liste;
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+    }
+
+    function trierproduit2(){
+			
+        $sql="SELECT * FROM produit ORDER BY prix ASC";
+        $db = config::getConnexion();
+        try{
+            $liste = $db->query($sql);
+            return $liste;
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+    }
 
    
    
