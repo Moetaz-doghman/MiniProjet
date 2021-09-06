@@ -44,6 +44,37 @@ class produitC {
         }			
     }
 
+    function afficherproduit1()
+    {
+        $sql="SElECT * From produit WHERE categorie='homme'";
+        $db = config::getConnexion();
+        try
+        {
+        $liste=$db->query($sql);
+        return $liste;
+        }
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }   
+    }
+
+    function afficherproduit2()
+    {
+        $sql="SElECT * From produit WHERE categorie='femme'";
+        $db = config::getConnexion();
+        try
+        {
+        $liste=$db->query($sql);
+        return $liste;
+        }
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }   
+    }
+
+
    
    
 
