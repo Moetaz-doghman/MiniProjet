@@ -63,6 +63,81 @@ class UtilisateurC {
         }
     }
 
+    function recherchernom($nom){
+		$sql="SELECT * From utilisateur WHERE nom= '$nom' ";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+		catch (Exception $e){
+			die('Erreur: '.$e->getMessage());
+		}	
+	}
+
+
+    
+    function rechercherprenom($prenom){
+		$sql="SELECT * From utilisateur WHERE prenom= '$prenom' ";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+		catch (Exception $e){
+			die('Erreur: '.$e->getMessage());
+		}	
+	}
+
+    function modifierutilisateur($utilisateur, $id){
+        try {
+            $db = config::getConnexion();
+            $query = $db->prepare(
+                'UPDATE utilisateur SET 
+                    nom = :nom, 
+                    prenom = :prenom, 
+                    date = :date,
+                    numero = :numero,
+                    email = :email,
+                    password = :password
+                   
+                   
+                WHERE id = :id'
+            );
+            $query->execute([
+                'nom' => $utilisateur->getNom(),
+                'prenom' => $utilisateur->getPrenom(),
+                'date' => $utilisateur->getDate(),
+                'numero' => $utilisateur->getNumero(),
+                'email' => $utilisateur->getEmail(),
+                'password' => $utilisateur->getPassword(),
+
+               
+
+                'id' => $id
+            ]);
+            echo $query->rowCount() . " records UPDATED successfully <br>";
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
+
+    function recupereretat($id)
+    {
+        $sql="SELECT * from utilisateur where id=$id";
+        $db = config::getConnexion();
+        try{
+            $query=$db->prepare($sql);
+            $query->execute();
+
+            $user=$query->fetch();
+            return $user;
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+    }
+
     
 
 

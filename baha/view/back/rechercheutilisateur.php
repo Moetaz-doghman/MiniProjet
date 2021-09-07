@@ -1,11 +1,20 @@
-  
-<?PHP
+  <?PHP
 	include "../../controller/UtilisateurC.php";
 
-	$affutilisateur=new utilisateurC();
-	$aff=$affutilisateur->afficherutilistauer();
+
+    if(isset($_POST['choix']) )
+    { if  ($_POST['choix']=='prenom'){
+		$UtilisateurC=new UtilisateurC();
+	$allusers =$UtilisateurC->rechercherprenom($_POST['Search']) ;
+	}
+
+		if  ($_POST['choix']=='nom'){
+			$UtilisateurC=new UtilisateurC();
+        $allusers =$UtilisateurC->recherchernom($_POST['Search']) ;
+		}
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -313,7 +322,7 @@
                   </thead>
                   <tbody>
                     <?php 
-                    foreach($aff as $utilisateur) {
+                    foreach($allusers as $utilisateur) {
                     ?>
 
                     <tr>
@@ -339,13 +348,12 @@
 
                     </tr>
                     <?PHP
-                        }
+                        } }
                     ?>
                     
                   </tbody>
                 </table>
- <br>
-            <form method="POST" action="rechercheutilisateur.php"> 
+    <br><form method="POST" action="rechercheutilisateur.php"> 
                    <br>
                  <center>    <select  placeholder="sujet" name="choix" id="choix" >
                             <option>Select</option>
@@ -418,7 +426,7 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
-<script src="js/scripte.js"></script>
+<script src="js/scriptee.js"></script>
 
 </body>
 </html>

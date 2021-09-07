@@ -1,10 +1,54 @@
-  
-<?PHP
-	include "../../controller/UtilisateurC.php";
+<?php
+    include_once '../../controller/UtilisateurC.php';
+    include_once '../../model/utilisateur.php';
 
-	$affutilisateur=new utilisateurC();
-	$aff=$affutilisateur->afficherutilistauer();
 
+    $error = "";
+
+    // create user
+    $user = null;
+
+    // create an instance of the controller
+    $userC = new utilisateurC();
+    if (
+        isset($_POST["nom"]) &&
+        isset($_POST["prenom"]) && 
+        isset($_POST["date"]) &&
+        isset($_POST["numero"]) &&
+        isset($_POST["email"]) &&
+
+		    isset($_POST["password"]) 
+       ) 
+        
+     {
+        if (
+            !empty($_POST["nom"]) &&  
+            !empty($_POST["prenom"]) && 
+            !empty($_POST["date"]) &&  
+            !empty($_POST["numero"]) && 
+            isset($_POST["email"]) &&
+
+		      	!empty($_POST["password"])
+            
+        ) {
+            $user = new utilisateur(
+                $_POST['nom'],
+                $_POST['prenom'],
+                $_POST['date'],
+                $_POST['numero'], 
+                $_POST['email'], 
+
+				$_POST['password'],
+                
+                
+            );
+            $userC->modifierutilisateur($user, $_GET['id']);
+            header('Location:client.php');
+        }
+        else
+            $error = "Missing information";
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -79,6 +123,7 @@
               </div>
             </div>
           </form>
+          
         </div>
       </li>
 
@@ -276,7 +321,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Gestion Clients</h1>
+            <h1 class="m-0">Gestion Produits</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -290,80 +335,76 @@
 
     <!-- Main content -->
     <section class="content">
+   
     <div class="row">
-          <div class="col-12">
-            <div class="card">
-             
-            
-        
-              <div class="card-body table-responsive p-0" style="height: 750px;">
-                <table class="table table-head-fixed text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Nom</th>
-                      <th>Prenom</th>
-                      <th>Date</th>
-                      <th>Numero</th>
-                      <th>Email</th>
-                      <th>Modifier</th>
-                      <th>Supprimer</th>
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Ajouter Produits</h3>
 
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php 
-                    foreach($aff as $utilisateur) {
-                    ?>
-
-                    <tr>
-                    <td><?PHP echo $utilisateur['id']; ?></td>
-                    <td><?PHP echo $utilisateur['nom']; ?></td>
-                    <td><?PHP echo $utilisateur['prenom']; ?></td>
-                    <td><?PHP echo $utilisateur['date']; ?></td>
-                    <td><?PHP echo $utilisateur['numero']; ?></td>
-                    <td><?PHP echo $utilisateur['email']; ?></td>
-
-                    <td>
-                    <a href="modifierutilisateur.php?id=<?PHP echo $utilisateur['id']; ?>"> <img src="https://img.icons8.com/fluent/48/000000/edit-file.png"/> </a>
-                  </td>
-                  <td>
-                    <form method="POST" action="supprimerutilisateur.php">
-                    <button type="submit" style="background-color:transparent; border-color:transparent;"> 
-                    <img src="https://img.icons8.com/color/48/000000/delete-forever.png"/>
-                                </button>	
-                    <input type="hidden" value=<?PHP echo $utilisateur['id']; ?> name="id">
-                    </form>
-                  </td>
-                  
-
-                    </tr>
-                    <?PHP
-                        }
-                    ?>
-                    
-                  </tbody>
-                </table>
- <br>
-            <form method="POST" action="rechercheutilisateur.php"> 
-                   <br>
-                 <center>    <select  placeholder="sujet" name="choix" id="choix" >
-                            <option>Select</option>
-                            <option>prenom</option>
-                            <option>nom</option>
-                            </select>  
-                         
-                              <input type="text"  name="Search" name="Search"  placeholder="Search" >   
-        <input type="submit" class="btn btn-outline-primary" onclick="return verif3();"></i>  </center>
-      </form>	
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
               </div>
-              <!-- /.card-body -->
             </div>
-            <!-- /.card -->
+           
+            <div class="card-body">
+            <?php
+			if (isset($_GET['id'])){
+				$user = $userC->recupereretat($_GET['id']);
+				
+		?>
+
+            <form name="f1" action="" method="POST">
+
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" class="form-control" value = "<?php echo $user['nom']; ?>"  required>
+              </div>
+              <div class="form-group">
+                <label for="prenom">prenom</label>
+                <input type="text" id="prenom" name="prenom" class="form-control" value = "<?php echo $user['prenom']; ?>"  required>
+              </div>
+              <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" class="form-control" value = "<?php echo $user['date']; ?>"  required>
+              </div>
+              <div class="form-group">
+                <label for="numero">Numero</label>
+                <input type="number" step="any" id="numero" name="numero" class="form-control" value = "<?php echo $user['numero']; ?>" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" class="form-control" value = "<?php echo $user['email']; ?>"  required>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" id="password" name="password" class="form-control" value = "<?php echo $user['password']; ?>"  required>
+              </div>
+                <input type="reset" class='btn btn-secondary ' value="Back">
+							<input type="submit" class="btn btn-primary" value="Valider" >
+                  </form>
+                  <?php
+                  }
+                        
+                ?>
+
+              
+               
+
+            </div>
+            <!-- /.card-body -->
           </div>
+          <!-- /.card -->
         </div>
-        <!-- /.row -->
+      
+      </div>
     
+  
+  
     </section>
     <!-- /.content -->
   </div>
@@ -418,7 +459,5 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
-<script src="js/scripte.js"></script>
-
 </body>
 </html>
