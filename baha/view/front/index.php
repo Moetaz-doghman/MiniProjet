@@ -175,7 +175,6 @@
 
 	    					<p class="bottom-area d-flex px-3">
 							<button type ="submit"  name="addtocart" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
-    							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
     						</p>
 											<input type="hidden" name="Item_Name" value='Floral Jackquard Pullover'>
 											<input type="hidden" name="Item_id" value='1'>
@@ -210,7 +209,6 @@
 	    					</div>
     						<p class="bottom-area d-flex px-3">
 							<button type ="submit"  name="addtocart" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
-    							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
     						</p>
 											<input type="hidden" name="Item_Name" value='Robe gris'>
 											<input type="hidden" name="Item_id" value='2'>
@@ -244,7 +242,6 @@
 	    					</div>
     						<p class="bottom-area d-flex px-3">
 							<button type ="submit"  name="addtocart" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
-    							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
     						</p>
 											<input type="hidden" name="Item_Name" value='Robe Blanche'>
 											<input type="hidden" name="Item_id" value='3'>
@@ -278,7 +275,6 @@
 	    					</div>
     						<p class="bottom-area d-flex px-3">
 							<button type ="submit"  name="addtocart" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
-    							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
     						</p>
 							<input type="hidden" name="Item_Name" value='Pantalon Bleu'>
 											<input type="hidden" name="Item_id" value='4'>

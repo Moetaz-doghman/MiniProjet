@@ -209,7 +209,7 @@ include_once "manage_cart.php";
 		                    <option value="Sousse">Sousse</option>
 		                    <option value="Beja">Beja</option>
 		                    <option value="Sfax">Sfax</option>
-		                    <option value="Mounastir">Mounastir</option>
+		                    <option value="Mounastir">Monastir</option>
 		                  </select>
 		                </div>
 		            	</div>
@@ -231,40 +231,16 @@ include_once "manage_cart.php";
                
 	            </div>
 	          </form><!-- END -->
-	          <div class="row mt-5 pt-3 d-flex">
-	          	<div class="col-md-6 d-flex">
-	          		<div class="cart-detail cart-total bg-light p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">Total en Dinar</h3>
+	        
+	
+	          	<div class="col-md">
+	          		<div class="cart-detail bg-light p-3 p-md-4">
+	          			
+									<div class="form-group">
+									<h3 class="billing-heading mb-4">Total en Dinar</h3>
 	          			<p class="d-flex">
 		    					<h5 id='gtotal'></h5>
 		    					</p>
-								</div>
-	          	</div>
-	
-	          	<div class="col-md-6">
-	          		<div class="cart-detail bg-light p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">Payment Method</h3>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> Direct Bank Tranfer</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> Check Payment</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> Cash</label>
-											</div>
-										</div>
-									</div>
 									
 									<p><a href="#"class="btn btn-primary py-3 px-4">Place an order</a></p>
 								</div>
