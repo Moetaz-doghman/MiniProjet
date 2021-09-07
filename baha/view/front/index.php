@@ -307,6 +307,8 @@
 			    ?>
     			<div class="col-sm col-md-6 col-lg ftco-animate">
     				<div class="product">
+					<form action="manage_cart.php" method="POST">
+
     					<a href="#" class="img-prod"><img src="../../images/<?= $homme['image'] ?>" alt="" height="500" width="300" alt="Colorlib Template" >
     						<div class="overlay"></div>
     					</a>
@@ -326,10 +328,14 @@
 	    							</p>
 	    						</div>
 	    					</div>
+							
     						<p class="bottom-area d-flex px-3">
-    							<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-    							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-    						</p>
+							<button type ="submit"  name="addtocart" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
+								</p>
+								<input type="hidden" name="Item_Name" value='<?php echo $homme['nom'] ?>'>
+											<input type="hidden" name="Item_id" value='<?php echo $homme['id'] ?>'>
+                                            <input type="hidden" name="price" value="<?php echo $homme['prix'] ?>">
+				</form>
     					</div>
     				</div>
     			</div>
@@ -361,6 +367,8 @@
 								?>
     			<div class="col-sm col-md-6 col-lg ftco-animate">
     				<div class="product">
+					<form action="manage_cart.php" method="POST">
+
     					<a href="#" class="img-prod"><img src="../../images/<?= $homme['image'] ?>" alt="" height="500" width="300" alt="Colorlib Template" >
 						
     						<div class="overlay"></div>
@@ -382,9 +390,12 @@
 	    						</div>
 	    					</div>
     						<p class="bottom-area d-flex px-3">
-    							<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-    							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-    						</p>
+							<button type ="submit"  name="addtocart" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
+							</p>
+							<input type="hidden" name="Item_Name" value='<?php echo $femme['nom'] ?>'>
+											<input type="hidden" name="Item_id" value='<?php echo $femme['id'] ?>'>
+                                            <input type="hidden" name="price" value="<?php echo $femme['prix'] ?>">
+				</form>
     					</div>
     				</div>
     			</div>
