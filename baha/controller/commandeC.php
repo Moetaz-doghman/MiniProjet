@@ -21,7 +21,7 @@
     }
 
     function ajoutercommande($commande){
-        $sql="INSERT INTO commande (prenom,nom,tel,adresse,email,produits,prix) 
+        $sql="INSERT INTO commande (prenom,nom,tel,adresse,email,produits,total) 
         VALUES (:prenom,:nom,:tel,:adresse,:email,:produits,:prix)";
         $db = config::getConnexion();
         try{

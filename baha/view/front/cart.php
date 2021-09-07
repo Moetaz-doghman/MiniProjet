@@ -1,5 +1,8 @@
 <?php
+
 include_once "manage_cart.php";
+include_once '../../controller/commandeC.php';
+include_once '../../model/commande.php';
 
 
 
@@ -179,23 +182,62 @@ include_once "manage_cart.php";
     	
 			</div>
 		</section>
+
+		<?php
+		
+		if (
+			isset($_POST["prenom"]) &&
+			isset($_POST["nom"]) && 
+			isset($_POST["adresse"]) &&
+			isset($_POST["tel"]) &&
+				isset($_POST["email"]) 
+		   ) 
+			
+		 {
+			if (
+				!empty($_POST["prenom"]) &&  
+				!empty($_POST["nom"]) && 
+				!empty($_POST["adresse"]) &&  
+				!empty($_POST["tel"]) && 
+					  !empty($_POST["email"])
+				
+			)  {
+				$commande = new commande(
+					$_POST['prenom'],
+					$_POST['nom'],
+					$_POST['tel'],
+					$_POST['adresse'], 
+					$_POST['email'],
+					$produit,
+					$total,
+					
+					
+				);
+				$commandeC = new commandeC();
+				$commandeC->ajoutercommande($commande);
+			}
+			else
+				$error = "Missing information";
+		}
+
+		?>
 		<section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-8 ftco-animate">
-						<form action="" method="POST" class="billing-form">
 							<h3 class="mb-4 billing-heading">Billing Details</h3>
 	          	<div class="row align-items-end">
 	          		<div class="col-md-6">
 	                <div class="form-group">
+					<form action="" method="POST" class="billing-form">
 	                	<label for="firstname">Firt Name</label>
-	                  <input type="text" class="form-control" placeholder="Enter Your First Name">
+	                  <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Enter Your First Name">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="lastname">Last Name</label>
-	                  <input type="text" class="form-control" placeholder="Enter Your Last Name">
+	                  <input id="nom" name="nom" type="text" class="form-control" placeholder="Enter Your Last Name">
 	                </div>
                 </div>
                 <div class="w-100"></div>
@@ -203,8 +245,7 @@ include_once "manage_cart.php";
 		            	<div class="form-group">
 		            		<label for="country">Adress</label>
 		            		<div class="select-wrap">
-		                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-		                  <select name="" id="" class="form-control">
+		                  <select id="adresse" name="adresse" class="form-control">
 		                  	<option value="Bizerte">Bizerte</option>
 		                    <option value="Tunis">Tunis</option>
 		                    <option value="Sousse">Sousse</option>
@@ -219,19 +260,17 @@ include_once "manage_cart.php";
 		            <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="phone">Phone</label>
-	                  <input type="text" class="form-control" placeholder="Enter Your Phone Number">
+	                  <input id="tel" name="tel" type="text" class="form-control" placeholder="Enter Your Phone Number">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="emailaddress">Email Address</label>
-	                  <input type="email" class="form-control" placeholder="Enter Your Email Adress">
+	                  <input  id="email" name="email" type="email" class="form-control" placeholder="Enter Your Email Adress">
 	                </div>
                 </div>
-                <div class="w-100"></div>
-               
 	            </div>
-	          </form><!-- END -->
+	        <!-- END -->
 	        
 	
 	          	<div class="col-md">
@@ -243,10 +282,11 @@ include_once "manage_cart.php";
 		    					<h5 id='gtotal'></h5>
 		    					</p>
 									
-									<p><a href="#"class="btn btn-primary py-3 px-4">Place an order</a></p>
+								<button type="submit" class="btn btn-primary" value="">Valider</button>
 								</div>
 	          	</div>
 	          </div>
+	</form>
           </div> <!-- .col-md-8 -->
         </div>
       </div>
