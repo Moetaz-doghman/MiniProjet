@@ -156,6 +156,7 @@ include_once "manage_cart.php";
                             <input type='hidden' name='Item_Name' value='$value[Item_Name]'>
                             </form>
                             </td>
+							
                             ";   
 
                         }

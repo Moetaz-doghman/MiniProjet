@@ -21,8 +21,8 @@
     }
 
     function ajoutercommande($commande){
-        $sql="INSERT INTO commande (prenom,nom,tel,prix,email) 
-        VALUES (:prenom,:nom,:tel,:email,:prix)";
+        $sql="INSERT INTO commande (prenom,nom,tel,adresse,email,produits,prix) 
+        VALUES (:prenom,:nom,:tel,:adresse,:email,:produits,:prix)";
         $db = config::getConnexion();
         try{
             $query = $db->prepare($sql);
@@ -31,7 +31,9 @@
                 'prenom' => $commande->getprenom(),
                 'nom' => $commande->getnom(),
                 'tel' => $commande->gettel(),
+                'adresse' => $commande->getadresse(),
                 'prix' => $commande->getprix(),
+                'produits' => $commande->getproduits(),
                 'email' => $commande->getemail()
 
 
@@ -69,7 +71,9 @@
                     prenom = :prenom, 
                     nom = :nom, 
                     tel = :tel,
+                    adresse = :adresse,
                     prix = :prix,
+                    produits = :produits,
                     email = :email
                    
                    
@@ -79,7 +83,9 @@
                 'prenom' => $commande->getprenom(),
                 'nom' => $commande->getnom(),
                 'tel' => $commande->gettel(),
+                'adresse' => $commande->getadresse(),
                 'prix' => $commande->getprix(),
+                'produits' => $commande->getproduits(),
                 'email' => $commande->getemail(),
 
                
