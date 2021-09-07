@@ -79,6 +79,8 @@
             </li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	          <li class="nav-item cta cta-colored"><a href="cart.php" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+			  <li class="nav-item cta cta-colored"><a href="login.php" class="nav-link"><h5 class="icon-user"></h5></a></li>
+
 
 	        </ul>
 	      </div>
