@@ -39,7 +39,7 @@ include "../../controller/commandeC.php";
         else
             $error = "Missing information";
     }
-
+    
 	$listecommandes=$commandeC->affichercommande();
      
     class mypdf extends FPDF
