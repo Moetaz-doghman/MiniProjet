@@ -72,8 +72,8 @@
                     nom = :nom, 
                     tel = :tel,
                     adresse = :adresse,
-                    prix = :prix,
-                    produits = :produits,
+                   
+                   
                     email = :email
                    
                    
@@ -84,8 +84,8 @@
                 'nom' => $commande->getnom(),
                 'tel' => $commande->gettel(),
                 'adresse' => $commande->getadresse(),
-                'prix' => $commande->getprix(),
-                'produits' => $commande->getproduits(),
+         
+                
                 'email' => $commande->getemail(),
 
                
@@ -97,6 +97,62 @@
             $e->getMessage();
         }
     }
+    function recupereretat($id)
+    {
+        $sql="SELECT * from commande where id=$id";
+        $db = config::getConnexion();
+        try{
+            $query=$db->prepare($sql);
+            $query->execute();
+
+            $user=$query->fetch();
+            return $user;
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+    }
+
+    function trierdesc(){
+			
+        $sql="SELECT * FROM commande ORDER BY total DESC";
+        $db = config::getConnexion();
+        try{
+            $liste = $db->query($sql);
+            return $liste;
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+    }
+
+    function trierasc(){
+			
+        $sql="SELECT * FROM commande ORDER BY total ASC";
+        $db = config::getConnexion();
+        try{
+            $liste = $db->query($sql);
+            return $liste;
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+    }
+
+    function recherchernom($nom){
+		$sql="SELECT * From commande WHERE nom= '$nom' ";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+		catch (Exception $e){
+			die('Erreur: '.$e->getMessage());
+		}	
+	}
+
+   
+
  }
 
 ?>

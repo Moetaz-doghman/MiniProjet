@@ -1,9 +1,9 @@
   
 <?PHP
-	include "../../controller/produitC.php";
+	include "../../controller/commandeC.php";
 
-	$affproduit=new produitC();
-	$aff=$affproduit->trierproduit2();
+	$affcommande=new commandeC();
+	$aff=$affcommande->trierasc();
 
 ?>
 
@@ -221,7 +221,7 @@
               </li>
          
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Produits
@@ -248,7 +248,7 @@
           </li>
          
           <li class="nav-item">
-            <a href="#" class="nav-link ">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-money-bill-alt"></i>
               <p>
                Commandes
@@ -270,8 +270,6 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -303,12 +301,12 @@
                 <table class="table table-head-fixed text-nowrap">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Categorie</th>
-                      <th>Nom</th>
-                      <th>Description</th>
-                      <th>Prix</th>
-                      <th>Image</th>
+                    <th>Nom</th>
+                      <th>Prenom</th>
+                      <th>Adresse</th>
+                      <th>Telephone</th>
+                      <th>Email</th>
+                      <th>Total</th>
                       <th>Modifier</th>
                       <th>Supprimer</th>
 
@@ -316,26 +314,26 @@
                   </thead>
                   <tbody>
                     <?php 
-                    foreach($aff as $produit) {
+                    foreach($aff as $commande) {
                     ?>
 
                     <tr>
-                    <td><?PHP echo $produit['id']; ?></td>
-                    <td><?PHP echo $produit['categorie']; ?></td>
-                    <td><?PHP echo $produit['nom']; ?></td>
-                    <td><?PHP echo $produit['description']; ?></td>
-                    <td><?PHP echo $produit['prix']; ?></td>
-                    <td><img src="../../images/<?= $produit['image'] ?>" width = "100" height = "100"></td>
+                    <td><?PHP echo $commande['nom']; ?></td>
+                    <td><?PHP echo $commande['prenom']; ?></td>
+                    <td><?PHP echo $commande['adresse']; ?></td>
+                    <td><?PHP echo $commande['tel']; ?></td>
+                    <td><?PHP echo $commande['email']; ?></td>
+                    <td><?PHP echo $commande['total']; ?></td>
 
                     <td>
-                    <a href="modifierproduit.php?id=<?PHP echo $produit['id']; ?>"> <img src="https://img.icons8.com/fluent/48/000000/edit-file.png"/> </a>
+                    <a href="modifiercommande.php?id=<?PHP echo $commande['id']; ?>"> <img src="https://img.icons8.com/fluent/48/000000/edit-file.png"/> </a>
                   </td>
                   <td>
-                    <form method="POST" action="supprimerproduit.php">
+                    <form method="POST" action="supprimercommande.php">
                     <button type="submit" style="background-color:transparent; border-color:transparent;"> 
                     <img src="https://img.icons8.com/color/48/000000/delete-forever.png"/>
                                 </button>	
-                    <input type="hidden" value=<?PHP echo $produit['id']; ?> name="id">
+                    <input type="hidden" value=<?PHP echo $commande['id']; ?> name="id">
                     </form>
                   </td>
                   
@@ -348,9 +346,9 @@
                   </tbody>
                 </table>
  <br>
-                 <center> <a href="tri.php">Tri Croissant Selon Le Prix </a></li> </center>
-                 <br><center> <a href="tri2.php">Tri Decroissant Selon Le Prix</a></li> </center>
-              </div>
+                 <center> <a href="tricommandeasc.php">Tri Croissant Selon Le Total </a></li> </center>
+                 <br><center> <a href="tricommandedesc.php">Tri Decroissant Selon Le Total</a></li> </center>
+                
               <!-- /.card-body -->
             </div>
             <!-- /.card -->

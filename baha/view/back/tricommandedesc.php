@@ -1,3 +1,12 @@
+  
+<?PHP
+	include "../../controller/commandeC.php";
+
+	$affcommande=new commandeC();
+	$aff=$affcommande->trierdesc();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -177,14 +186,14 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">ADMIN </span>
+      <span class="brand-text font-weight-light">ADMIN</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-    <br>
-    <br>
-
+     <br>
+     <br>
+     
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
@@ -203,44 +212,64 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="#" class="nav-link ">
+                <a href="client.php" class="nav-link ">
                   <i class="nav-icon fas fa-user"></i>
                   <p>
                     Clients
                   </p>
                 </a>
               </li>
+         
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link ">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
               <p>
                 Produits
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="ajouterproduit.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ajouter produit</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="produit.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Afficher produits </p>
+                </a>
+              </li>
+
+            
+            </ul>
           </li>
+         
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link ">
-              <i class="nav-icon fas fa-shopping-basket"></i>
-              <p>
-                Panier
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link active">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-money-bill-alt"></i>
               <p>
-                Commandes
+               Commandes
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
-          </li>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="commande.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Afficher Commandes</p>
+                </a>
+              </li>
+           </ul>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -248,7 +277,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Gestion Commandes</h1>
+            <h1 class="m-0">Gestion Produits</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -262,6 +291,70 @@
 
     <!-- Main content -->
     <section class="content">
+    <div class="row">
+          <div class="col-12">
+            <div class="card">
+             
+            
+        
+              <div class="card-body table-responsive p-0" style="height: 700px;">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                    <th>Nom</th>
+                      <th>Prenom</th>
+                      <th>Adresse</th>
+                      <th>Telephone</th>
+                      <th>Email</th>
+                      <th>Total</th>
+                      <th>Modifier</th>
+                      <th>Supprimer</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php 
+                    foreach($aff as $commande) {
+                    ?>
+
+                    <tr>
+                    <td><?PHP echo $commande['nom']; ?></td>
+                    <td><?PHP echo $commande['prenom']; ?></td>
+                    <td><?PHP echo $commande['adresse']; ?></td>
+                    <td><?PHP echo $commande['tel']; ?></td>
+                    <td><?PHP echo $commande['email']; ?></td>
+                    <td><?PHP echo $commande['total']; ?></td>
+
+                    <td>
+                    <a href="modifiercommande.php?id=<?PHP echo $commande['id']; ?>"> <img src="https://img.icons8.com/fluent/48/000000/edit-file.png"/> </a>
+                  </td>
+                  <td>
+                    <form method="POST" action="supprimercommande.php">
+                    <button type="submit" style="background-color:transparent; border-color:transparent;"> 
+                    <img src="https://img.icons8.com/color/48/000000/delete-forever.png"/>
+                                </button>	
+                    <input type="hidden" value=<?PHP echo $commande['id']; ?> name="id">
+                    </form>
+                  </td>
+                  
+
+                    </tr>
+                    <?PHP
+                        }
+                    ?>
+                    
+                  </tbody>
+                </table>
+ <br>
+                 <center> <a href="tricommandeasc.php">Tri Croissant Selon Le Total </a></li> </center>
+                 <br><center> <a href="tricommandedesc.php">Tri Decroissant Selon Le Total</a></li> </center>
+               
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <!-- /.row -->
     
     </section>
     <!-- /.content -->
