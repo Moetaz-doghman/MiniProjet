@@ -144,8 +144,15 @@
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit">
-							create account 
+							Create account 
 						</button>
+					</div>
+					<br>
+					<br>
+					<br>
+					
+					<div class="container">
+						<a href="index.php">Retour a l'acceuil</a>
 					</div>
 			
 			</div>
