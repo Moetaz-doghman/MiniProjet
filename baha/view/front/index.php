@@ -1,5 +1,21 @@
 <?PHP
 	include "../../controller/produitC.php";
+	session_start();
+
+	if (isset($_SESSION['id']) && ! empty($_SESSION['id']) && isset($_SESSION['prenom']) && ! empty($_SESSION['prenom']) &&  isset($_SESSION['nom']) && ! empty($_SESSION['nom']))
+	{
+		$id=$_SESSION['id'];
+		$user=$_SESSION['prenom'] .' '. $_SESSION['nom'];
+		$message="Se Deconnecter";
+		
+
+
+	}
+	else{
+	$user="";
+	$message="Se Connecter";
+	
+     }
 
 	$affproduit1=new produitC();
 	$aff1=$affproduit1->afficherproduit1();
@@ -8,6 +24,9 @@
 	$aff2=$affproduit2->afficherproduit2();
 
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -71,7 +90,7 @@
 	          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="shop.html">Shop</a>
+              	<a class="dropdown-item" href="shop.php">Shop</a>
                 <a class="dropdown-item" href="product-single.html">Single Product</a>
                 <a class="dropdown-item" href="cart.php">Cart</a>
                 <a class="dropdown-item" href="checkout.php">Checkout</a>
@@ -79,7 +98,12 @@
             </li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	          <li class="nav-item cta cta-colored"><a href="cart.php" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
-			  <li class="nav-item cta cta-colored"><a href="login.php" class="nav-link"><h5 class="icon-user"></h5></a></li>
+	          <li class="nav-item active"><a  class="nav-link"><?PHP echo $user; ?> <br> </a></li>
+			  <li class="nav-item active"><a href="deconnexion.php" class="nav-link"><?PHP echo $message; ?> <br> </a></li>
+
+
+
+
 
 
 	        </ul>
@@ -309,7 +333,8 @@
     				<div class="product">
 					<form action="manage_cart.php" method="POST">
 
-    					<a href="#" class="img-prod"><img src="../../images/<?= $homme['image'] ?>" alt="" height="500" width="300" alt="Colorlib Template" >
+    					<a href="#" class="img-prod"><img src="../../images/<?= $homme['image'] ?>" alt="" height="350" width="250" alt="Colorlib Template" >
+
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 px-3">
@@ -369,7 +394,7 @@
     				<div class="product">
 					<form action="manage_cart.php" method="POST">
 
-    					<a href="#" class="img-prod"><img src="../../images/<?= $homme['image'] ?>" alt="" height="500" width="300" alt="Colorlib Template" >
+					<a href="#" class="img-prod"><img src="../../images/<?= $femme['image'] ?>" alt="" height="350" width="250" alt="Colorlib Template" >
 						
     						<div class="overlay"></div>
     					</a>

@@ -1,3 +1,27 @@
+<?PHP
+	include "../../controller/produitC.php";
+	session_start();
+
+	if (isset($_SESSION['id']) && ! empty($_SESSION['id']) && isset($_SESSION['prenom']) && ! empty($_SESSION['prenom']) &&  isset($_SESSION['nom']) && ! empty($_SESSION['nom']))
+	{
+		$id=$_SESSION['id'];
+		$user=$_SESSION['prenom'] .' '. $_SESSION['nom'];
+		$message="Se Deconnecter";
+		
+
+
+	}
+	else{
+	$user="";
+	$message="Se Connecter";
+	
+     }
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -61,7 +85,7 @@
 	          <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="shop.html">Shop</a>
+              	<a class="dropdown-item" href="shop.php">Shop</a>
                 <a class="dropdown-item" href="product-single.html">Single Product</a>
                 <a class="dropdown-item" href="cart.html">Cart</a>
                 <a class="dropdown-item" href="checkout.html">Checkout</a>
@@ -70,6 +94,8 @@
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	         
 	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+			  <li class="nav-item active"><a  class="nav-link"><?PHP echo $user; ?> <br> </a></li>
+			  <li class="nav-item active"><a href="deconnexion.php" class="nav-link"><?PHP echo $message; ?> <br> </a></li>
 
 	        </ul>
 	      </div>
@@ -338,49 +364,15 @@
 
 		    	<div class="col-md-4 col-lg-2 sidebar">
 		    		<div class="sidebar-box-2">
-		    			<h2 class="heading mb-4"><a href="#">Clothing</a></h2>
+		    			<h2 class="heading mb-4"><a href="#">Vetement Pour :</a></h2>
 		    			<ul>
-		    				<li><a href="#">Shirts &amp; Tops</a></li>
-								<li><a href="#">Dresses</a></li>
-								<li><a href="#">Shorts &amp; Skirts</a></li>
-								<li><a href="#">Jackets</a></li>
-								<li><a href="#">Coats</a></li>
-								<li><a href="#">Sleeveless</a></li>
-								<li><a href="#">Trousers</a></li>
-								<li><a href="#">Winter Coats</a></li>
-								<li><a href="#">Jumpsuits</a></li>
+		    				<li><a href="homme.php">Homme</a></li>
+								<li><a href="femme.php">Femme</a></li>
+								
 		    			</ul>
 		    		</div>
-		    		<div class="sidebar-box-2">
-		    			<h2 class="heading mb-4"><a href="#">Jeans</a></h2>
-		    			<ul>
-		    				<li><a href="#">Shirts &amp; Tops</a></li>
-								<li><a href="#">Dresses</a></li>
-								<li><a href="#">Shorts &amp; Skirts</a></li>
-								<li><a href="#">Jackets</a></li>
-								<li><a href="#">Coats</a></li>
-								<li><a href="#">Jeans</a></li>
-								<li><a href="#">Sleeveless</a></li>
-								<li><a href="#">Trousers</a></li>
-								<li><a href="#">Winter Coats</a></li>
-								<li><a href="#">Jumpsuits</a></li>
-		    			</ul>
-		    		</div>
-		    		<div class="sidebar-box-2">
-		    			<h2 class="heading mb-2"><a href="#">Bags</a></h2>
-		    			<h2 class="heading mb-2"><a href="#">Accessories</a></h2>
-		    		</div>
-						<div class="sidebar-box-2">
-		    			<h2 class="heading mb-4"><a href="#">Shoes</a></h2>
-		    			<ul>
-		    				<li><a href="#">Nike</a></li>
-								<li><a href="#">Addidas</a></li>
-								<li><a href="#">Skechers</a></li>
-								<li><a href="#">Jackets</a></li>
-								<li><a href="#">Coats</a></li>
-								<li><a href="#">Jeans</a></li>
-		    			</ul>
-		    		</div>
+		    		
+		    		
     			</div>
     		</div>
     	</div>

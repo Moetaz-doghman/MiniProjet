@@ -46,7 +46,7 @@ class produitC {
 
     function afficherproduit1()
     {
-        $sql="SElECT * From produit WHERE categorie='homme'";
+        $sql="SElECT * From produit WHERE categorie='homme' limit 4";
         $db = config::getConnexion();
         try
         {
@@ -61,7 +61,37 @@ class produitC {
 
     function afficherproduit2()
     {
-        $sql="SElECT * From produit WHERE categorie='femme'";
+        $sql="SElECT * From produit WHERE categorie='femme' limit 4";
+        $db = config::getConnexion();
+        try
+        {
+        $liste=$db->query($sql);
+        return $liste;
+        }
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }   
+    }
+
+    function afficherproduit11()
+    {
+        $sql="SElECT * From produit WHERE categorie='homme' ";
+        $db = config::getConnexion();
+        try
+        {
+        $liste=$db->query($sql);
+        return $liste;
+        }
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }   
+    }
+
+    function afficherproduit22()
+    {
+        $sql="SElECT * From produit WHERE categorie='femme' ";
         $db = config::getConnexion();
         try
         {
