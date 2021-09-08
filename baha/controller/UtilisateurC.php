@@ -138,6 +138,52 @@ class UtilisateurC {
         }
     }
 
+    function login($email,$password)
+    {
+        $sql = "SELECT * FROM `utilisateur` WHERE email='$email' and password= '$password' ";
+         $db= config::getConnexion();
+         try{
+            $query=$db->prepare($sql);
+            $query->execute();
+            $count=$query->rowCount();
+    
+            if($count==0) {
+                  $message = "Incorrect";
+                  return $message;
+            }else {
+                  $x=$query->fetch();
+                  return $x;
+              }
+               }
+                catch (Exception $e){
+                   $message=" ".$e->getMessage();
+                   return  $message;
+               }
+    }
+
+    function checkmail($email){
+		$sql = "SELECT * FROM `utilisateur` WHERE email='$email'";
+		 $db= config::getConnexion();
+		 try{
+			$query=$db->prepare($sql);
+			$query->execute();
+			$count=$query->rowCount();
+	
+			if($count==0) {
+				  $message = "Incorrect";
+				  return $message;
+			}else {
+				  $x=$query->fetch();
+				  return $x["id"];
+			  }
+			   }
+				catch (Exception $e){
+				   $message=" ".$e->getMessage();
+				   return  $message;
+			   }
+	}
+
+
     
 
 
@@ -146,3 +192,5 @@ class UtilisateurC {
 	
 
 ?>
+
+

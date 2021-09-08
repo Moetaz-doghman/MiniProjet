@@ -1,3 +1,31 @@
+<?PHP
+    include_once '../../controller/utilisateurC.php';
+    include_once '../../model/utilisateur.php';
+session_start();
+
+ $messageupdate="";
+ $message="";
+ $errorMsg="";
+ if(isset($_SESSION['message'])){
+  $messageupdate=$_SESSION['message'];
+  }
+ $userC = new UtilisateurC;
+ if ((isset($_POST["email"]) &&
+	 isset($_POST["password"])) || 
+	  (!empty($_POST["email"]) &&
+     !empty($_POST["password"])))
+	{
+	   $message=$userC->login($_POST["email"] , $_POST["password"]);
+	   if($message=="Incorrect"){
+		    $errorMsg="Le pseudo ou le mot de passe est incorrect";
+	   }else{
+		
+		
+				header('location:index.php');
+			
+	   }
+   }	
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,10 +66,10 @@
 					</span>
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="" method="POST">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="nom" placeholder="Enter username" required>
+						<span class="label-input100">Email</span>
+						<input class="input100" type="text" name="email" placeholder="Enter email" required>
 						<span class="focus-input100"></span>
 					</div>
 
@@ -66,15 +94,22 @@
 						</div>
 					</div>
 
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+					<button class="login100-form-btn" type="submit" value="Se connecter" onclick="submitForm()">
 							Login
 						</button>
-					</div>
+
+					<div style="color:red"><?PHP echo $errorMsg; ?></div>
+					<div style="color:red;padding-left: 5%;" id="error-password"></div>
+					<div style="color:red;padding-left: 5%;" id="error-login"></div>
+
+
+
 				</form>
 			</div>
 		</div>
 	</div>
+
+	
 	
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -92,6 +127,8 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+
+	
 
 </body>
 </html>
