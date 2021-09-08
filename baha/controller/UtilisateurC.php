@@ -183,6 +183,20 @@ class UtilisateurC {
 			   }
 	}
 
+    function updatePassword($id,$password){
+        $sql="UPDATE utilisateur set Password='$password' where id='$id' ";
+        $db = config::getConnexion();
+        try{
+            $query = $db->prepare($sql);
+        
+            $query->execute();			
+        }
+        catch (Exception $e){
+            echo 'Erreur: '.$e->getMessage();
+        }			
+    }
+
+
 
     
 

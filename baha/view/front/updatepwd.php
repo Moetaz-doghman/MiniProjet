@@ -1,65 +1,23 @@
-<?php
-    include_once '../../controller/utilisateurC.php';
-    include_once '../../model/utilisateur.php';
+<?PHP
+session_start();
 
-
-    $error = "";
-
-    // create user
-    $user = null;
-	$errorMsg="";
-
-    // create an instance of the controller
-    $userC = new utilisateurC();
-    if (
-        
-        isset($_POST["nom"]) && 
-        isset($_POST["prenom"]) &&
-        isset($_POST["date"]) &&
-        isset($_POST["numero"]) &&
-        isset($_POST["email"]) &&
-       isset($_POST["password"]) 
-       ) 
-        
-     {
-        if (
-            
-            !empty($_POST["nom"]) && 
-            !empty($_POST["prenom"]) &&  
-            !empty($_POST["date"]) && 
-            !empty($_POST["numero"]) && 
-            !empty($_POST["email"]) && 
-			 !empty($_POST["password"])
-            
-        ) {
-			$message=$userC->checkmail($_POST["email"]);
-			if($message=="Incorrect"){
-				$user = new utilisateur(
-					$_POST['nom'],
-					$_POST['prenom'],
-					$_POST['date'],
-					$_POST['numero'], 
-					$_POST['email'], 
-	 
-					$_POST['password'],
-					
-					
-				);
-				$userC->ajouterutilisateur($user);
-				header('Location:login.php');
-			}
-			else {
-				$errorMsg="Email existant";
-
-			}
-           
-        }
-       
-    }
-    
+include_once '../../controller/utilisateurC.php';
+$message="";
+ $errorMsg="";
+ $userC = new UtilisateurC;
+ if ((isset($_POST["confirmpassword"]) &&
+	 isset($_POST["password"])) || 
+	  (!empty($_POST["confirmpassword"]) &&
+     !empty($_POST["password"])))
+	{
+    $url = $_SERVER['REQUEST_URI'];
+    $url_components = parse_url($url); 
+    parse_str($url_components['query'], $params); 
+    $id=$params['Id']; 
+    $userC->updatePassword($id,$_POST["confirmpassword"]);
+    header('location:index.php');
+   }	
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,66 +50,46 @@
 <body>
 	
 	<div class="limiter">
-
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-form-title" style="background-image: url(images/bg-01.jpg);">
 					<span class="login100-form-title-1">
-						Register
+						Mot De Passe oublié
 					</span>
 				</div>
 
+				<form class="login100-form validate-form" id="login-box"  action="" method="POST">
+					
 
-				<form class="login100-form validate-form" action="" method="POST">
-					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-						<span class="label-input100">Nom</span>
-						<input class="input100" type="text" name="nom" placeholder="Entrer nom" required  >
+					<div class="wrap-input100 validate-input m-b-18" >
+						<span class="label-input100">Mot de passe</span>
+						<input class="input100" id="login__confirmpassword"  type="password" name="confirmpassword" placeholder="Enter password" required>
 						<span class="focus-input100"></span>
 					</div>
-
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-						<span class="label-input100">Prenom</span>
-						<input class="input100" type="text" name="prenom" placeholder="Entrer prenom" required  >
-						<span class="focus-input100"></span>
-					</div>
-
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-						<span class="label-input100">Date</span>
-						<input class="input100" type="date" name="date"  value="2021-09-24" min="1950-01-01" max="2021-12-31" required  >
-						<span class="focus-input100"></span>
-					</div>
-
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-						<span class="label-input100">Numero</span>
-						<input class="input100" type="text" name="numero" placeholder="12345678"  pattern="[0-9]{2}[0-9]{3}[0-9]{3}" required >
-						<span class="focus-input100"></span>
-					</div> 
-
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-						<span class="label-input100">Email</span>
-						<input class="input100" type="text" name="email" placeholder="azerty@gmail.com" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Entrer adresse mail" required  >
-						<span class="focus-input100"></span>
-					</div>
+                    
+                    <div style="color:red;padding-left: 5%;" id="error-login"></div>
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
-						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="password" placeholder="Enter password" minlength="6" maxlength="20" required >
+						<span class="label-input100">Confirmation Mot de passe</span>
+						<input class="input100" id="login__password"  type="password" name="password" placeholder="Enter password" required>
 						<span class="focus-input100"></span>
 					</div>
 
-					
-					<div style="color:red"><?PHP echo $errorMsg; ?></div>
+                    <div style="color:red;padding-left: 5%;" id="error-password"></div>
 
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" type="submit">
-							create account 
-						</button>
-					</div>
-			
+					<input type="button" class="login100-form-btn" value="Modifier" onclick="submitForm()" >
+                    <div style="color:red"><?PHP echo $errorMsg; ?></div>
+
+
+				
+					
+
+				</form>
 			</div>
 		</div>
-    </from>
-    </div>
+	</div>
+
+	
 	
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -169,6 +107,23 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+    <script>
+        function submitForm() {
+        var confirm=document.getElementById('login__confirmpassword').value;
+        var password=document.getElementById('login__password').value;
+        if(!password || !confirm){
+            document.getElementById("error-password").innerHTML = "Il faut sasir votre mot de passe";
+        }else if(password != confirm){
+            document.getElementById("error-password").innerHTML = "Mot de passe incorrect";
+        }else{
+            document.getElementById('login-box').submit();
+        }
+        }
+    </script>
+
+
+
+	
 
 </body>
 </html>
