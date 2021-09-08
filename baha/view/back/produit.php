@@ -359,6 +359,8 @@
                          
                               <input type="text"  name="Search" name="Search"  placeholder="Search" >   
         <input type="submit" class="btn btn-outline-primary" onclick="return verif3();"></i>  </center>
+        <center> <a href="stat.php">Statistique </a></li> </center>
+
       </form>	
               </div>
               <!-- /.card-body -->
