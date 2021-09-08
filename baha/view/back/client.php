@@ -212,7 +212,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="client.php" class="nav-link active ">
+                <a href="client.php" class="nav-link ">
                   <i class="nav-icon fas fa-user"></i>
                   <p>
                     Clients
@@ -221,7 +221,7 @@
               </li>
          
           <li class="nav-item">
-            <a href="#" class="nav-link ">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Produits
@@ -233,35 +233,37 @@
               <li class="nav-item">
                 <a href="ajouterproduit.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Produit</p>
+                  <p>Ajouter produit</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="produit.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Afficher Produits </p>
+                  <p>Afficher produits </p>
                 </a>
               </li>
 
             
             </ul>
           </li>
+         
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-shopping-basket"></i>
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-copy"></i>
               <p>
-                Panier
+               Commandes
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-money-bill-alt"></i>
-              <p>
-                Commandes
-              </p>
-            </a>
-          </li>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="commande.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Afficher Commandes</p>
+                </a>
+              </li>
+           </ul>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

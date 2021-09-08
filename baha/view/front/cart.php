@@ -183,44 +183,7 @@ include_once '../../model/commande.php';
 			</div>
 		</section>
 
-		<?php
 		
-		if (
-			isset($_POST["prenom"]) &&
-			isset($_POST["nom"]) && 
-			isset($_POST["adresse"]) &&
-			isset($_POST["tel"]) &&
-				isset($_POST["email"]) 
-		   ) 
-			
-		 {
-			if (
-				!empty($_POST["prenom"]) &&  
-				!empty($_POST["nom"]) && 
-				!empty($_POST["adresse"]) &&  
-				!empty($_POST["tel"]) && 
-					  !empty($_POST["email"])
-				
-			)  {
-				$commande = new commande(
-					$_POST['prenom'],
-					$_POST['nom'],
-					$_POST['tel'],
-					$_POST['adresse'], 
-					$_POST['email'],
-					$produit,
-					$total,
-					
-					
-				);
-				$commandeC = new commandeC();
-				$commandeC->ajoutercommande($commande);
-			}
-			else
-				$error = "Missing information";
-		}
-
-		?>
 		<section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center">
@@ -228,8 +191,9 @@ include_once '../../model/commande.php';
 							<h3 class="mb-4 billing-heading">Billing Details</h3>
 	          	<div class="row align-items-end">
 	          		<div class="col-md-6">
+					  <form action="facture.php" method="POST" class="billing-form">
+
 	                <div class="form-group">
-					<form action="" method="POST" class="billing-form">
 	                	<label for="firstname">Firt Name</label>
 	                  <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Enter Your First Name">
 	                </div>
@@ -269,6 +233,17 @@ include_once '../../model/commande.php';
 	                  <input  id="email" name="email" type="email" class="form-control" placeholder="Enter Your Email Adress">
 	                </div>
                 </div>
+				<div class="col-md-6">
+	                <div class="form-group">
+	                  <input  id="produit" name="produit" type="hidden" class="form-control" value="<?php echo $produit; ?>">
+	                </div>
+                </div>
+				<div class="col-md-6">
+	                <div class="form-group">
+	                  <input  id="total" name="total" type="hidden" class="form-control" value="<?php echo $total; ?>">
+	                </div>
+                </div>
+
 	            </div>
 	        <!-- END -->
 	        
