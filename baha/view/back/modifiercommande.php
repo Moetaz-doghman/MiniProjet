@@ -386,7 +386,7 @@
 	                  <input  id="total" name="total" type="hidden" class="form-control" value="<?php echo $user['total']; ?>">
 	                </div>
                 </div>
-                <input type="reset" class='btn btn-secondary ' value="Back">
+                <input type="reset" class='btn btn-secondary ' value="Reset">
 							<input type="submit" class="btn btn-primary" value="Valider" >
                   </form>
                   <?php

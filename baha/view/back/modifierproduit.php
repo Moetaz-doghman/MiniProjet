@@ -391,7 +391,7 @@
                 <label for="image">Image</label>
                 <input type="text" id="image" name="image" class="form-control" value = "<?php echo $user['image']; ?>"  required>
               </div>
-                <input type="reset" class='btn btn-secondary ' value="Back">
+                <input type="reset" class='btn btn-secondary ' value="Reset">
 							<input type="submit" class="btn btn-primary" value="Valider" >
                   </form>
                   <?php
