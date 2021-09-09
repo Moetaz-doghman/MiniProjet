@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 08 sep. 2021 à 15:08
+-- Généré le : jeu. 09 sep. 2021 à 11:59
 -- Version du serveur : 10.4.19-MariaDB
 -- Version de PHP : 7.4.20
 
@@ -42,15 +42,7 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `date`, `numero`, `email`, `password`) VALUES
-(2, 'moetaz', 'doghmanjnd', '2021-09-24', 55334409, 'moetaz.doghman@eprit.tn', 'moetaz'),
-(3, 'ahmed', 'doghman', '2021-09-24', 55334409, 'moetaz.doghman@eprit.tn', 'moetaz'),
-(4, 'ahmed', 'doghman', '2021-09-24', 55334409, 'moetaz.doghman@eprit.tn', 'moetaz'),
-(5, 'ahmed', 'doghman', '2021-09-24', 55334409, 'moetaz.doghman@eprit.tn', 'dagdeeg'),
-(6, 'moetaz', 'doghman', '2021-09-24', 55334409, 'doghman.moetaz@gmail.com', 'admin'),
-(7, 'moetaz', 'doghman', '2021-09-24', 55334409, 'moetaz.doghman@eprit.tn', 'moetaz'),
-(8, 'd kj ', ' jjjf', '2021-09-24', 55334409, 'admin@esprit.toktok', 'admin'),
-(9, 'moetaz', 'doghman', '2021-09-24', 55334409, 'admin@esprit.tn', 'admin'),
-(10, 'hnjk', 'y', '2021-09-24', 12345678, 'doghman.moetaz@gmail.tn', 'admin');
+(9, 'baha', 'belkhir', '2021-09-24', 55334409, 'admin@esprit.tn', 'admin');
 
 --
 -- Index pour les tables déchargées
@@ -70,7 +62,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
