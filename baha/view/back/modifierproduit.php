@@ -335,7 +335,7 @@
         <div class="col-md-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Ajouter Produits</h3>
+              <h3 class="card-title">Modifier Produit</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -389,7 +389,7 @@
               
               <div class="form-group">
                 <label for="image">Image</label>
-                <input type="text" id="image" name="image" class="form-control" value = "<?php echo $user['image']; ?>"  required>
+                <input type="text" id="image" name="image" class="form-control" value = "<?php echo $user['image']; ?>"  readonly>
               </div>
                 <input type="reset" class='btn btn-secondary ' value="Reset">
 							<input type="submit" class="btn btn-primary" value="Valider" >
