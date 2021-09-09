@@ -87,7 +87,7 @@ include_once '../../model/commande.php';
 	          <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="shop.html">Shop</a>
+              	<a class="dropdown-item" href="shop.php">Shop</a>
                 <a class="dropdown-item" href="cart.php">Cart</a>
               </div>
             </li>
@@ -239,20 +239,20 @@ include_once '../../model/commande.php';
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-8 ftco-animate">
-							<h3 class="mb-4 billing-heading">Commandes avec Facture</h3>
+							<h3 class="mb-4 billing-heading">Commandes Sans Facture</h3>
 	          	<div class="row align-items-end">
 	          		<div class="col-md-6">
-					  <form action="facture.php" method="POST" class="billing-form">
+					  <form action="" method="POST" class="billing-form">
 
 	                <div class="form-group">
 	                	<label for="firstname">Firt Name</label>
-	                  <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Enter Your First Name">
+	                  <input id="prenom" name="prenom" type="text" class="form-control" value="<?php echo $_SESSION['prenom']; ?>"disabled>
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="lastname">Last Name</label>
-	                  <input id="nom" name="nom" type="text" class="form-control" placeholder="Enter Your Last Name">
+	                  <input id="nom" name="nom" type="text" class="form-control" value="<?php echo $_SESSION['nom']; ?>"disabled>
 	                </div>
                 </div>
                 <div class="w-100"></div>
@@ -266,7 +266,7 @@ include_once '../../model/commande.php';
 		                    <option value="Sousse">Sousse</option>
 		                    <option value="Beja">Beja</option>
 		                    <option value="Sfax">Sfax</option>
-		                    <option value="Mounastir">Monastir</option>
+		                    <option value="Monastir">Monastir</option>
 		                  </select>
 		                </div>
 		            	</div>
@@ -275,13 +275,13 @@ include_once '../../model/commande.php';
 		            <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="phone">Phone</label>
-	                  <input id="tel" name="tel" type="text" class="form-control" placeholder="Enter Your Phone Number">
+	                  <input id="tel" name="tel" type="text" class="form-control" value="<?php echo $_SESSION['numero']; ?>"disabled>
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="emailaddress">Email Address</label>
-	                  <input  id="email" name="email" type="email" class="form-control" placeholder="Enter Your Email Adress">
+	                  <input  id="email" name="email" type="email" class="form-control"value="<?php echo $_SESSION['email']; ?>"disabled>
 	                </div>
                 </div>
 				<div class="col-md-6">
@@ -317,25 +317,25 @@ include_once '../../model/commande.php';
           </div> <!-- .col-md-8 -->
         </div>
       </div>
-	  <br><br><br><br><br><br><hr><br><br><br><br><br><br><br><br>
+	  <br><br><br><br><br><br><br><br><hr><br><br><br><br><br><br><br><br><br><br>
 	  
 	  <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-8 ftco-animate">
-							<h3 class="mb-4 billing-heading">Commandes sans Facture</h3>
+							<h3 class="mb-4 billing-heading">Commandes Avec Facture</h3>
 	          	<div class="row align-items-end">
 	          		<div class="col-md-6">
-					  <form action="" method="POST" class="billing-form">
+					  <form action="facture.php" method="POST" class="billing-form">
 
 	                <div class="form-group">
 	                	<label for="firstname">Firt Name</label>
-	                  <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Enter Your First Name">
+	                  <input id="prenom" name="prenom" type="text" class="form-control" value="<?php echo $_SESSION['prenom']; ?>"disabled>
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="lastname">Last Name</label>
-	                  <input id="nom" name="nom" type="text" class="form-control" placeholder="Enter Your Last Name">
+	                  <input id="nom" name="nom" type="text" class="form-control" value="<?php echo $_SESSION['nom']; ?>"disabled>
 	                </div>
                 </div>
                 <div class="w-100"></div>
@@ -349,7 +349,7 @@ include_once '../../model/commande.php';
 		                    <option value="Sousse">Sousse</option>
 		                    <option value="Beja">Beja</option>
 		                    <option value="Sfax">Sfax</option>
-		                    <option value="Mounastir">Monastir</option>
+		                    <option value="Monastir">Monastir</option>
 		                  </select>
 		                </div>
 		            	</div>
@@ -358,13 +358,13 @@ include_once '../../model/commande.php';
 		            <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="phone">Phone</label>
-	                  <input id="tel" name="tel" type="text" class="form-control" placeholder="Enter Your Phone Number">
+	                  <input id="tel" name="tel" type="text" class="form-control"value="<?php echo $_SESSION['numero']; ?>"disabled>
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="emailaddress">Email Address</label>
-	                  <input  id="email" name="email" type="email" class="form-control" placeholder="Enter Your Email Adress">
+	                  <input  id="email" name="email" type="email" class="form-control"  value="<?php echo $_SESSION['email']; ?>"disabled>
 	                </div>
                 </div>
 				<div class="col-md-6">
@@ -382,13 +382,15 @@ include_once '../../model/commande.php';
 	        <!-- END -->
 	        
 	
-	          	<div class="col-md">
+			<div class="col-md">
 	          		<div class="cart-detail bg-light p-3 p-md-4">
 	          			
 									<div class="form-group">
 									<h3 class="billing-heading mb-4">Total en Dinar</h3>
 	          			<p class="d-flex">
 		    					<h5 id='gtotal'></h5>
+								<input  id="total" name="total" type="text" class="form-control" value="<?php echo "$total DT"; ?>"disabled>
+
 		    					</p>
 									
 								<button type="submit"  class="btn btn-primary" value="">Valider</button>
@@ -397,7 +399,7 @@ include_once '../../model/commande.php';
 	          	</div>
 	          </div>
 	</form>
-          </div> <!-- .col-md-8 -->
+          <!-- .col-md-8 -->
         </div>
       </div>
     </section> <!-- .section -->
