@@ -92,7 +92,7 @@
                 <a class="dropdown-item" href="checkout.html">Checkout</a>
               </div>
             </li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+	          <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
 	         
 	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
               <li class="nav-item active"><a  class="nav-link"><?PHP echo $user; ?> <br> </a></li>

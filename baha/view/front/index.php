@@ -24,9 +24,6 @@
 	$aff2=$affproduit2->afficherproduit2();
 
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -96,7 +93,7 @@
                 <a class="dropdown-item" href="checkout.php">Checkout</a>
               </div>
             </li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+	          <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
 	          <li class="nav-item cta cta-colored"><a href="cart.php" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 	          <li class="nav-item active"><a  class="nav-link"><?PHP echo $user; ?> <br> </a></li>
 			  <li class="nav-item active"><a href="deconnexion.php" class="nav-link"><?PHP echo $message; ?> <br> </a></li>

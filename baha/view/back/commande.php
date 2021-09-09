@@ -307,6 +307,7 @@
                       <th>Adresse</th>
                       <th>Telephone</th>
                       <th>Email</th>
+                      <th>Produits</th>
                       <th>Total</th>
                       <th>Modifier</th>
                       <th>Supprimer</th>
@@ -324,7 +325,9 @@
                     <td><?PHP echo $commande['adresse']; ?></td>
                     <td><?PHP echo $commande['tel']; ?></td>
                     <td><?PHP echo $commande['email']; ?></td>
+                    <td><?PHP echo $commande['produits']; ?></td>
                     <td><?PHP echo $commande['total']; ?></td>
+
 
                     <td>
                     <a href="modifiercommande.php?id=<?PHP echo $commande['id']; ?>"> <img src="https://img.icons8.com/fluent/48/000000/edit-file.png"/> </a>
