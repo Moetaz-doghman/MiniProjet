@@ -374,7 +374,7 @@
                       <label class="custom-file-label" for="image" >Choose file</label>
                     </div>
                   </div>
-                <input type="reset" class='btn btn-secondary ' value="Back">
+                <input type="reset" class='btn btn-secondary ' value="Reset">
 							<input type="submit" class="btn btn-primary" value="Valider" onclick="return verif1();" >
                   </form>
 

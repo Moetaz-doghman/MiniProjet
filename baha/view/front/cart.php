@@ -5,6 +5,22 @@ include_once '../../controller/commandeC.php';
 include_once '../../model/commande.php';
 
 
+	if (isset($_SESSION['id']) && ! empty($_SESSION['id']) && isset($_SESSION['prenom']) && ! empty($_SESSION['prenom']) &&  isset($_SESSION['nom']) && ! empty($_SESSION['nom']))
+	{
+		$id=$_SESSION['id'];
+		$user=$_SESSION['prenom'] .' '. $_SESSION['nom'];
+		$message="Se Deconnecter";
+		
+
+
+	}
+	else{
+	$user="";
+	$message="Se Connecter";
+	
+     }
+
+
 
 ?>
 
@@ -77,9 +93,11 @@ include_once '../../model/commande.php';
                 <a class="dropdown-item" href="checkout.php">Checkout</a>
               </div>
             </li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+	          <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
 	         
 	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+			  <li class="nav-item active"><a  class="nav-link"><?PHP echo $user; ?> <br> </a></li>
+			  <li class="nav-item active"><a href="deconnexion.php" class="nav-link"><?PHP echo $message; ?> <br> </a></li>
 
 	        </ul>
 	      </div>
@@ -91,7 +109,7 @@ include_once '../../model/commande.php';
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home</a></span> <span>Cart</span></p>
             <h1 class="mb-0 bread">My Cart</h1>
           </div>
         </div>
