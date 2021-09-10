@@ -10,12 +10,22 @@ include_once '../../model/commande.php';
 		$id=$_SESSION['id'];
 		$user=$_SESSION['prenom'] .' '. $_SESSION['nom'];
 		$message="Se Deconnecter";
+		$prenom=$_SESSION['prenom'];
+		$nom=$_SESSION['nom'];
+		$email=$_SESSION['email'];
+		$numero=$_SESSION['numero'];
+		
+		
 		
 
 
 	}
 	else{
 	$user="";
+	$prenom="";
+	$nom="";
+	$email="";
+	$numero="";
 	$message="Se Connecter";
 	
      }
@@ -232,17 +242,9 @@ include_once '../../model/commande.php';
 	else
 		$error = "Missing information";
 }
-if (isset($_SESSION['id']) && ! empty($_SESSION['id']) && isset($_SESSION['prenom']) && ! empty($_SESSION['prenom']) &&  isset($_SESSION['nom']) && ! empty($_SESSION['nom']))
-	{
-		
+
 
 ?>
-		
-
-	  <?php
-	  }
-	  else{
-	 ?>
 
 <section class="ftco-section">
       <div class="container">
@@ -255,13 +257,13 @@ if (isset($_SESSION['id']) && ! empty($_SESSION['id']) && isset($_SESSION['preno
 
 	                <div class="form-group">
 	                	<label for="firstname">Firt Name</label>
-	                  <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Enter your First Name">
+	                  <input id="prenom" name="prenom" type="text" class="form-control" value="<?php echo $prenom;?>">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="lastname">Last Name</label>
-	                  <input id="nom" name="nom" type="text" class="form-control"  placeholder="Enter your Last Name">
+	                  <input id="nom" name="nom" type="text" class="form-control" value="<?php echo $nom;?>">
 	                </div>
                 </div>
                 <div class="w-100"></div>
@@ -284,13 +286,13 @@ if (isset($_SESSION['id']) && ! empty($_SESSION['id']) && isset($_SESSION['preno
 		            <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="phone">Phone</label>
-	                  <input id="tel" name="tel" type="text" class="form-control"  placeholder="Enter your Phone Number">
+	                  <input id="tel" name="tel" type="text" class="form-control" value="<?php echo $numero;?>">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="emailaddress">Email Address</label>
-	                  <input  id="email" name="email" type="email" class="form-control" placeholder="Enter your Email">
+	                  <input  id="email" name="email" type="email" class="form-control"value="<?php echo $email;?>">
 	                </div>
                 </div>
 				<div class="col-md-6">
@@ -328,13 +330,94 @@ if (isset($_SESSION['id']) && ! empty($_SESSION['id']) && isset($_SESSION['preno
       </div>
 
 
-	<?php
-	  
-	   }
-  
-
-	  ?>
+	
 	  <br><br><br><br><br><br><br><br><hr><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+	  <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-8 ftco-animate">
+							<h3 class="mb-4 billing-heading">Commandes Avec Facture</h3>
+	          	<div class="row align-items-end">
+	          		<div class="col-md-6">
+					  <form action="facture.php" method="POST" class="billing-form">
+
+	                <div class="form-group">
+	                	<label for="firstname">Firt Name</label>
+	                  <input id="prenom" name="prenom" type="text" class="form-control" value="<?php echo $prenom;?>">
+	                </div>
+	              </div>
+	              <div class="col-md-6">
+	                <div class="form-group">
+	                	<label for="lastname">Last Name</label>
+	                  <input id="nom" name="nom" type="text" class="form-control" value="<?php echo $nom;?>">
+	                </div>
+                </div>
+                <div class="w-100"></div>
+		            <div class="col-md-12">
+		            	<div class="form-group">
+		            		<label for="country">Adress</label>
+		            		<div class="select-wrap">
+		                  <select id="adresse" name="adresse" class="form-control">
+		                  	<option value="Bizerte">Bizerte</option>
+		                    <option value="Tunis">Tunis</option>
+		                    <option value="Sousse">Sousse</option>
+		                    <option value="Beja">Beja</option>
+		                    <option value="Sfax">Sfax</option>
+		                    <option value="Monastir">Monastir</option>
+		                  </select>
+		                </div>
+		            	</div>
+		            </div>
+		          
+		            <div class="col-md-6">
+	                <div class="form-group">
+	                	<label for="phone">Phone</label>
+	                  <input id="tel" name="tel" type="text" class="form-control" value="<?php echo $numero;?>">
+	                </div>
+	              </div>
+	              <div class="col-md-6">
+	                <div class="form-group">
+	                	<label for="emailaddress">Email Address</label>
+	                  <input  id="email" name="email" type="email" class="form-control"value="<?php echo $email;?>">
+	                </div>
+                </div>
+				<div class="col-md-6">
+	                <div class="form-group">
+	                  <input  id="produit" name="produit" type="hidden" class="form-control" value="<?php echo $produit; ?>">
+	                </div>
+                </div>
+				<div class="col-md-6">
+	                <div class="form-group">
+	                  <input  id="total" name="total" type="hidden" class="form-control" value="<?php echo $total; ?>">
+	                </div>
+                </div>
+
+	            </div>
+	        <!-- END -->
+	        
+	
+	          	<div class="col-md">
+	          		<div class="cart-detail bg-light p-3 p-md-4">
+	          			
+									<div class="form-group">
+									<h3 class="billing-heading mb-4">Total en Dinar</h3>
+	          			<p class="d-flex">
+		    					<h5 id='gtotal'></h5>
+		    					</p>
+									
+								<button type="submit"  class="btn btn-primary" value="">Valider</button>
+
+								</div>
+	          	</div>
+	          </div>
+	</form>
+          </div> <!-- .col-md-8 -->
+        </div>
+      </div>
 	  
 	 
     </section> <!-- .section -->
